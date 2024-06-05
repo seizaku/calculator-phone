@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calculator</title>
+  </head>
+  <body class="text-white">
+    <main>
+      <section
+        class="mx-auto bg-white flex items-center h-screen justify-center"
+      >
+        <div
+          class="relative h-[780px] drop-shadow-xl pb-8 pt-4 w-[340px] rounded-2xl bg-neutral-950 border p-2"
+        >
+          <div class="absolute top-0.5 w-full flex justify-center pr-4">
+            <div
+              class="h-8 w-8 rounded-3xl rounded-t-none bg-neutral-950"
+            ></div>
+          </div>
+          <div
+            class="h-full w-full rounded-2xl bg-neutral-800 border border-neutral-900"
+          >
+            <div
+              class="relative h-[320px] flex justify-end items-end p-8 rounded-t-2xl w-full bg-neutral-900"
+            >
+              <h1 class="text-4xl" class="relative" id="screen"></h1>
+              <div
+                class="absolute bottom-2 h-2 w-12 rounded-full bg-neutral-500"
+              ></div>
+            </div>
+            <div
+              class="h-[400px] w-full place-items-center grid grid-cols-4 p-2"
+            >
+              <button
+                onclick="insert('C')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                C
+              </button>
+              <button
+                onclick="insert('/')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                ÷
+              </button>
+              <button
+                onclick="insert('*')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                ×
+              </button>
+              <button
+                onclick="insert('cc')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                ←
+              </button>
+              <button
+                onclick="insert('7')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                7
+              </button>
+              <button
+                onclick="insert('8')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                8
+              </button>
+              <button
+                onclick="insert('9')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                9
+              </button>
+              <button
+                onclick="insert('-')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                −
+              </button>
+              <button
+                onclick="insert('4')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                4
+              </button>
+              <button
+                onclick="insert('5')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                5
+              </button>
+              <button
+                onclick="insert('6')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                6
+              </button>
+              <button
+                onclick="insert('+')"
+                class="number h-12 w-12 text-green-500 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                +
+              </button>
+              <button
+                onclick="insert('1')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                1
+              </button>
+              <button
+                onclick="insert('2')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                2
+              </button>
+              <button
+                onclick="insert('3')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                3
+              </button>
+              <button
+                onclick="insert('=')"
+                class="equals h-full w-full row-span-2 bg-green-600 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-green-600/90 rounded-xl"
+              >
+                =
+              </button>
+              <button
+                onclick="insert('%')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                %
+              </button>
+              <button
+                onclick="insert('0')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                0
+              </button>
+              <button
+                onclick="insert('.')"
+                class="number h-12 w-12 cursor-pointer text-xl font-bold flex items-center justify-center hover:bg-neutral-500/20 rounded-full"
+              >
+                .
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      let values = "";
+
+      const insert = (value) => {
+        const screen = document.getElementById("screen");
+        console.log(values);
+        if (value == "%") {
+          values += " % ";
+          screen.innerText = `${values}`;
+          return;
+        }
+        if (value == "C") {
+          screen.innerText = "";
+          values = "";
+          return;
+        }
+        if (value == "cc") {
+          values = values.slice(0, values.length - 1);
+          screen.innerText = `${values}`;
+          return;
+        }
+        if (value == "=") {
+          let result = eval(values);
+          if (!result) {
+            return;
+          }
+          values = result;
+          screen.innerText = eval(values);
+          return;
+        } else if (value) {
+          values += value;
+          screen.innerText = `${values}`;
+          return;
+        }
+      };
+    </script>
+  </body>
+</html>
